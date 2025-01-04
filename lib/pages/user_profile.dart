@@ -23,7 +23,7 @@ class UserProfile extends StatelessWidget {
               SizedBox(height: 20),
               CircleAvatar(
                 radius: 85,
-                backgroundImage: AssetImage("assets/photo.jpeg"), // Ensure the path is valid
+                backgroundImage: AssetImage(""), // Ensure the path is valid
               ),
               SizedBox(height: 30),
               ListTile(
