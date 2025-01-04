@@ -6,7 +6,7 @@ import 'package:rapp/pages/admin_page.dart';
 import 'package:rapp/pages/user_page.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key});
+  const DrawerWidget({super.key, required String username, required String email});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
                   padding: EdgeInsets.all(10),
                   child: Row(
                   children: [
-                    CircleAvatar(radius: 70,backgroundImage: AssetImage("assets/logo.jpeg"),),
+                    CircleAvatar(radius: 70,backgroundImage: AssetImage("assets/logo.jpeg")),
                     SizedBox(width: 10,),
                     Column(
                       children: [
@@ -49,7 +49,7 @@ class DrawerWidget extends StatelessWidget {
               ),
 
               ListTile(leading: Icon(Icons.group),title:Text( "Users"),onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder:(context)=>UserPage() ));
+                Navigator.push(context,MaterialPageRoute(builder:(context)=>UserPage(username: null, email: null,) ));
               
               },),
               ListTile(leading: Icon(Icons.person),title:Text("Admin"),onTap: (){
@@ -81,5 +81,3 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 }
-
-

@@ -18,6 +18,7 @@ class TextProblem extends StatelessWidget {
       body: Container(
         height: h,
         width: w,
+        padding: EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,11 +30,12 @@ class TextProblem extends StatelessWidget {
             SizedBox(height: 30,),
             
             TextField(
+                           
               maxLines: 11,
-              decoration: InputDecoration(
+              decoration: InputDecoration(                
                 hintText: 'Enter Your Description here....',
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: OutlineInputBorder(                  
                   borderSide: BorderSide(color: Colors.blue, width: 2),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),

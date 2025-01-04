@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:rapp/pages/drawer.dart';
+import 'package:rapp/pages/user_auth.dart';
 
 class SplashWidget extends StatefulWidget {
   const SplashWidget({super.key});
@@ -22,7 +23,7 @@ class _SplashWidgetState extends State<SplashWidget> {
 
    _navigatetohome()async{
     await Future.delayed(Duration(milliseconds: 3000),(){});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DrawerWidget()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>UserAuth()));
    }
 
   @override

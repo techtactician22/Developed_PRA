@@ -81,6 +81,7 @@ dependency_overrides:
   test_api: ^0.7.4
   vm_service: ^15.0.0
   flutter_lints: ^5.0.0
+  image_picker_ios: ^0.8.12+2
   
 
 
@@ -109,6 +110,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/logo.jpeg
+    - assets/WhatsApp Audio 2025-01-04 at 00.29.36_f2627e78.mp3
+    - assets/WhatsApp Audio 2025-01-04 at 00.48.12_76cd7c5f.mp3
+    - assets/photo.jpeg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
