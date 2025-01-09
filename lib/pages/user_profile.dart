@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UserProfile extends StatelessWidget {
-  final String username;
-  final String email;
-
-  // Constructor to receive username and email
-  UserProfile({required this.username, required this.email});
+  const UserProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +24,12 @@ class UserProfile extends StatelessWidget {
               SizedBox(height: 30),
               ListTile(
                 leading: Icon(Icons.person_4_outlined),
-                title: Text(
-                  "User Name : $username",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
+                
               ),
               SizedBox(height: 10),
               ListTile(
                 leading: Icon(Icons.email),
-                title: Text(
-                  "Email : $email",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
+                
               ),
             ],
           ),
@@ -48,3 +38,4 @@ class UserProfile extends StatelessWidget {
     );
   }
 }
+

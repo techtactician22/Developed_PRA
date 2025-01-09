@@ -1,12 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rapp/pages/admin_page.dart';
 import 'package:rapp/pages/user_page.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key, required String username, required String email});
+  const DrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class DrawerWidget extends StatelessWidget {
               ),
 
               ListTile(leading: Icon(Icons.group),title:Text( "Users"),onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder:(context)=>UserPage(username: null, email: null,) ));
+                Navigator.push(context,MaterialPageRoute(builder:(context)=>UserPage() ));
               
               },),
               ListTile(leading: Icon(Icons.person),title:Text("Admin"),onTap: (){

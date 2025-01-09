@@ -8,34 +8,42 @@ plugins {
 
 android {
     namespace = "com.example.rapp"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 34 // Use the latest API level available
+
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17 // Updated for Java 17
+        targetCompatibility = JavaVersion.VERSION_17 // Updated for Java 17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = "17" // Updated for Java 17 compatibility
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // Specify your own unique Application ID
         applicationId = "com.example.rapp"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        // Set your app's minimum and target SDK versions
+        minSdk = 24
+        targetSdk = 34 // Ensure it matches the compileSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        // Enable multidex if you exceed the 65k method limit
+        multiDexEnabled true
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Ensure you configure signing for release builds
             signingConfig = signingConfigs.debug
+            minifyEnabled true // Set to true and add ProGuard rules for production
+            shrinkResources true
+
+        // ProGuard rules for resource shrinking
+        
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

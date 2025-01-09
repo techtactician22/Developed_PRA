@@ -1,6 +1,5 @@
 import 'dart:io';
-import 'dart:ui';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +13,49 @@ class ImageProblem extends StatefulWidget {
 
 class _ImageProblemState extends State<ImageProblem> {
   File? image;
+
+  final ImagePicker _imagePicker = ImagePicker();
+  String? imageUrl;
+  Future<void> pickImage()async{
+    try{
+      XFile? res = await _imagePicker.pickImage(source: ImageSource.gallery);
+
+      if(res != null){
+        await uploadImageToFirebase(File(res.path));
+      }
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text("Failed to pick image: $e"),
+      
+      ));
+    }
+    
+  }
+
+  Future<void> uploadImageToFirebase(File image) async{
+    try{
+      Reference reference = FirebaseStorage.instance.ref().child("images/${ DateTime.now().microsecondsSinceEpoch}.png");
+      await reference.putFile(image).whenComplete(() {
+         ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+          content: Text("Upload Successful"),
+      
+      ));
+      });
+      imageUrl = await reference.getDownloadURL();
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text("Failed to upload image: $e"),
+      
+      ));
+    }
+  }
   /*UploadTask? uploadTask;*/
   @override
   Widget build(BuildContext context) {
@@ -30,9 +72,9 @@ class _ImageProblemState extends State<ImageProblem> {
           SizedBox(height: 10,),
           Align(
             alignment: Alignment.center,
-            child: InkWell(
+            child: GestureDetector(
               onTap: () async {
-                final picture = ImagePicker().pickImage(source: ImageSource.camera);
+                pickImage();
               },
               child: CircleAvatar(
                 radius: 80,
